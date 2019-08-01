@@ -38,7 +38,7 @@ BEGIN
      UPDATE VEICOLO 
         SET PedaggioFinale = pedaggio_fin
         WHERE IDENTIFICATIVO = id_veicolo;
-    RETURN 'Il pedaggio finale del veicolo '||id_veicolo||' e'' di '||pedaggio_fin||' €';
+    RETURN 'Il pedaggio finale del veicolo '||id_veicolo||' e'' di '||pedaggio_fin||' â‚¬';
 END;
 /
 CREATE OR REPLACE PROCEDURE percorso_veicolo(id_veicolo Veicolo.Identificativo%TYPE)
@@ -73,7 +73,7 @@ BEGIN
       SELECT NOME INTO n_autostrada FROM AUTOSTRADA WHERE IDENTIFICATIVO = (SELECT IdAutostrada FROM CASELLO WHERE IDENTIFICATIVO = I.IDCASELLO);
       SELECT Pedaggio INTO pedaggio_casello FROM CASELLO WHERE IDENTIFICATIVO = I.IDCASELLO;
       INSERT INTO tempPercorso VALUES(seqPercorso.NEXTVAL,id_veicolo,'Il veicolo in luogo '||I.Luogo||' al km '||I.PosizioneVeicolo||'  con id '||I.IdVeicolo||' attraversa il casello di '||n_casello||
-               ' in Autostrada '||n_autostrada||' e paga '||pedaggio_casello||'€ al tempo '||I.TempoEvento||'.');
+               ' in Autostrada '||n_autostrada||' e paga '||pedaggio_casello||'â‚¬ al tempo '||I.TempoEvento||'.');
     ELSIF(I.IdControlloElettronico IS NOT NULL) THEN   -- Il veicolo ha attraversato un controllo elettronico, controlla la velocita mi raccomando.
      SELECT NOME INTO n_autostrada FROM AUTOSTRADA WHERE IDENTIFICATIVO = (SELECT IdAutostrada FROM DIREZIONETRATTA WHERE IDENTIFICATIVO = (SELECT IdDirezione FROM CONTROLLOELETTRONICO WHERE IDENTIFICATIVO = I.IDControlloElettronico));
       INSERT INTO tempPercorso VALUES(seqPercorso.NEXTVAL,id_veicolo,'Il veicolo in luogo '||I.Luogo||' al km '||I.PosizioneVeicolo||'  con id '||I.IdVeicolo||' passa sotto il controllo con id '||I.IdControlloElettronico||
