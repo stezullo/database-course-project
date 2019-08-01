@@ -2,7 +2,7 @@ CREATE TABLE Autostrada(
 	Identificativo INTEGER PRIMARY KEY,
 	Nome VARCHAR2(50) UNIQUE,
 	AltraDenominazione VARCHAR2(50) NOT NULL,
-	Inizio VARCHAR2(50) NOT NULL,
+	Inizio VARCHAR2(50) NOT NULL, 
 	Fine VARCHAR2(50) NOT NULL,
 	LunghezzaTratta FLOAT NOT NULL
 );
