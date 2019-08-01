@@ -20,7 +20,7 @@ BEGIN
       RAISE_APPLICATION_ERROR(-20017, 'L''id del veicolo inserito non esiste non e'' collegato a nessun casello. Pedaggio non calcolato');
      END IF;
      -- Applicazione del Bonus di Classe del Veicolo
-         -- Abbiamo deciso di adottare un bonus del 5% per i veicoli di classe A
+         -- Abbiamo deciso di adottare un bonus del 5% per i veicoli di classe A 
          -- 8% per B, 15% per 3 assi, 18% per 4 assi, 20% per 5 assi.
      SELECT ClassePedaggio INTO classe_pedaggio FROM VEICOLO WHERE IDENTIFICATIVO = id_veicolo;
      IF(classe_pedaggio = 'A') THEN
